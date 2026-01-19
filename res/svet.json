@@ -1,29 +1,91 @@
 {
   "mistnosti": [
     {
-      "jmeno": "Hala",
-      "popis": "Vstupní hala s vysokým stropem."
+      "jmeno": "Satna",
+      "popis": "Mistnost vonici po potu a mentolove masti. Jsou zde rady drevenych lavicek a tva prazdna skrinka, ktera ti pripomina tvou ztratu."
     },
     {
-      "jmeno": "Kuchyně",
-      "popis": "Místnost plná vůní a nablýskaného nádobí."
+      "jmeno": "Chodba",
+      "popis": "Dlouha, ozvenou znejici chodba vyzdobena plakaty historickych vitezstvi FC BZZ. Je to hlavni cast stadionu, ktera spojuje vsechny dulezite sektory."
     },
     {
-      "jmeno": "Zahrada",
-      "popis": "Krásná zahrada s fontánou uprostřed."
+      "jmeno": "Sklad",
+      "popis": "Temna mistnost s vysokymi regaly, kde jsou fotbalove mice, kuzely a roztrhane site."
     },
     {
-      "jmeno": "Sklep",
-      "popis": "Temný a vlhký sklep. Jde z něj chlad."
+      "jmeno": "Kancelar",
+      "popis": "Moderni, proskleny prostor s kozenymi kresly. V rohu tichounce huci lednice, ktera skryva osvezeni pro vyvolene."
+    },
+    {
+      "jmeno": "Bufet",
+      "popis": "Srdce stadionu pro fanousky. Vzduch je nasycen vuni grilovaneho masa a piva. Sedi tu ti nejvernejsi priznivci."
+    },
+    {
+      "jmeno": "Sprchy",
+      "popis": "Mistnost s bilymi kachlickami, kde se drzi para a vlhkost. Na mokre zdi je nacmaran vzkaz, ktery muze byt dulezitou stopou."
+    },
+    {
+      "jmeno": "VIP loze",
+      "popis": "Prepychovy prostor s vyhledem na cele hriste. Polstrovane sedacky a drahe koberce ukryvaji tajemstvi souperova kapitana."
+    },
+    {
+      "jmeno": "Hriste",
+      "popis": "Dokonale posekany zeleny pazit pod zaricimi reflektory. Je to misto tveho osudu, kam smis vstoupit jen jako hrdina."
     }
   ],
   "propojeni": [
-    { "odkud": "Hala", "kam": "Kuchyně" },
-    { "odkud": "Kuchyně", "kam": "Hala" },
-    { "odkud": "Hala", "kam": "Zahrada" },
-    { "odkud": "Zahrada", "kam": "Hala" },
-    { "odkud": "Kuchyně", "kam": "Sklep" },
-    { "odkud": "Sklep", "kam": "Kuchyně" }
+    {
+      "odkud": "Satna",
+      "kam": "Chodba"
+    },
+    {
+      "odkud": "Chodba",
+      "kam": "Satna"
+    },
+    {
+      "odkud": "Satna",
+      "kam": "Sprchy"
+    },
+    {
+      "odkud": "Sprchy",
+      "kam": "Satna"
+    },
+    {
+      "odkud": "Chodba",
+      "kam": "Sklad"
+    },
+    {
+      "odkud": "Sklad",
+      "kam": "Chodba"
+    },
+    {
+      "odkud": "Chodba",
+      "kam": "Kancelar"
+    },
+    {
+      "odkud": "Kancelar",
+      "kam": "Chodba"
+    },
+    {
+      "odkud": "Chodba",
+      "kam": "Bufet"
+    },
+    {
+      "odkud": "Bufet",
+      "kam": "Chodba"
+    },
+    {
+      "odkud": "Bufet",
+      "kam": "VIP loze"
+    },
+    {
+      "odkud": "VIP loze",
+      "kam": "Bufet"
+    },
+    {
+      "odkud": "VIP loze",
+      "kam": "Hriste"
+    }
   ],
-  "start": "Hala"
+  "start": "Satna"
 }

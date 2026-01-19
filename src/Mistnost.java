@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//Třída představující místnost (lokaci) ve hře.
+// Trida predstavujici mistnost (lokaci) ve hre.
 public class Mistnost {
 
     private String nazev;

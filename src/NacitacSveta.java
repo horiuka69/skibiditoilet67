@@ -15,8 +15,7 @@ public class NacitacSveta {
 
         // 1. Nacteni mistnosti
         // vzor: { "jmeno": "...", "popis": "..." }
-
-        // Jednodušší regex pro tento specifický formát:
+        // Jednodussi regex pro tento specificky format:
         Pattern pMistnost = Pattern
                 .compile("\\{\\s*\"jmeno\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"popis\"\\s*:\\s*\"([^\"]+)\"\\s*\\}");
         Matcher mMistnost = pMistnost.matcher(obsah);
@@ -26,8 +25,8 @@ public class NacitacSveta {
             mistnosti.put(jmeno, new Mistnost(jmeno, popis));
         }
 
-        // 2. Načtení propojení
-        // Hledáme vzor: { "odkud": "...", "kam": "..." }
+        // 2. Nacteni propojeni
+        // vzor: { "odkud": "...", "kam": "..." }
         Pattern pPropojeni = Pattern
                 .compile("\\{\\s*\"odkud\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"kam\"\\s*:\\s*\"([^\"]+)\"\\s*\\}");
         Matcher mPropojeni = pPropojeni.matcher(obsah);
@@ -43,7 +42,7 @@ public class NacitacSveta {
             }
         }
 
-        // 3. Načtení startovní místnosti
+        // 3. Nacteni startu
         Pattern pStart = Pattern.compile("\"start\"\\s*:\\s*\"([^\"]+)\"");
         Matcher mStart = pStart.matcher(obsah);
         String startName = null;
@@ -54,7 +53,6 @@ public class NacitacSveta {
         if (startName != null && mistnosti.containsKey(startName)) {
             return mistnosti.get(startName);
         } else {
-            // Fallback, pokud start není definován nebo nalezen, vrátíme první, nebo null
             if (!mistnosti.isEmpty()) {
                 return mistnosti.values().iterator().next();
             }
