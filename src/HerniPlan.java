@@ -10,11 +10,11 @@ public class HerniPlan {
 
     private void zalozProstorHry() {
         try {
-            // Pokusime se nacist svet z JSON souboru
+
             Mistnost startovniMistnost = NacitacSveta.nacistSvet("res/svet.json");
 
             if (startovniMistnost == null) {
-                // Fallback - vytvorime jednoduchou mistnost
+
                 startovniMistnost = new Mistnost("Prazdnota", "Svet se nepodarilo nacist.");
             }
 
@@ -22,7 +22,7 @@ public class HerniPlan {
 
         } catch (IOException e) {
             System.out.println("Chyba pri nacitani sveta: " + e.getMessage());
-            // Fallback
+
             Mistnost startovniMistnost = new Mistnost("Chyba", "Chyba souboru: " + e.getMessage());
             this.hrac = new Hrac(startovniMistnost);
         }

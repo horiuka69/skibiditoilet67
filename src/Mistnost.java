@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-// Trida predstavujici mistnost (lokaci) ve hre.
+
 public class Mistnost {
 
     private String nazev;
@@ -41,8 +41,7 @@ public class Mistnost {
         return Collections.unmodifiableCollection(vychody.values());
     }
 
-    // Prozatimni implementace pro predmety a postavy (aby kod byl kompilovatelny,
-    // ale zatim neresime logiku)
+
     public void vlozPredmet(Predmet predmet) {
         // TODO: Implementovat inventar mistnosti
     }
