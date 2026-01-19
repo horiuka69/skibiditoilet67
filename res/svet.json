@@ -1,0 +1,29 @@
+{
+  "mistnosti": [
+    {
+      "jmeno": "Hala",
+      "popis": "Vstupní hala s vysokým stropem."
+    },
+    {
+      "jmeno": "Kuchyně",
+      "popis": "Místnost plná vůní a nablýskaného nádobí."
+    },
+    {
+      "jmeno": "Zahrada",
+      "popis": "Krásná zahrada s fontánou uprostřed."
+    },
+    {
+      "jmeno": "Sklep",
+      "popis": "Temný a vlhký sklep. Jde z něj chlad."
+    }
+  ],
+  "propojeni": [
+    { "odkud": "Hala", "kam": "Kuchyně" },
+    { "odkud": "Kuchyně", "kam": "Hala" },
+    { "odkud": "Hala", "kam": "Zahrada" },
+    { "odkud": "Zahrada", "kam": "Hala" },
+    { "odkud": "Kuchyně", "kam": "Sklep" },
+    { "odkud": "Sklep", "kam": "Kuchyně" }
+  ],
+  "start": "Hala"
+}

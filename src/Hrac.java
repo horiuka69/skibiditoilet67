@@ -1,17 +1,22 @@
-
 public class Hrac {
 
+    private Mistnost aktualniMistnost;
+    private Batoh batoh;
+
     public Hrac(Mistnost pocatecniMistnost) {
+        this.aktualniMistnost = pocatecniMistnost;
+        this.batoh = new Batoh();
     }
 
     public Mistnost getAktualniMistnost() {
-        return null;
+        return aktualniMistnost;
     }
 
     public void setAktualniMistnost(Mistnost mistnost) {
+        this.aktualniMistnost = mistnost;
     }
 
     public Batoh getBatoh() {
-        return null;
+        return batoh;
     }
 }
