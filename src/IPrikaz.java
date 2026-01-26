@@ -7,9 +7,5 @@ public interface IPrikaz {
 
     String proved(String[] parametry);
 
-    /**
-     * Vrátí název příkazu.
-       return název příkazu
-     */
     String getNazev();
 }

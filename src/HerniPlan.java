@@ -11,7 +11,7 @@ public class HerniPlan {
     private void zalozProstorHry() {
         try {
 
-            Mistnost startovniMistnost = NacitacSveta.nacistSvet("res/svet.json");
+            Mistnost startovniMistnost = NacitacSveta.nacistSvet("res/gamedata.json");
 
             if (startovniMistnost == null) {
 

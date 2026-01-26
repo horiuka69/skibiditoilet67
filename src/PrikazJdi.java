@@ -7,6 +7,7 @@ public class PrikazJdi implements IPrikaz {
         this.plan = plan;
     }
 
+
     @Override
     public String proved(String[] parametry) {
         if (parametry.length == 0) {

@@ -2,35 +2,127 @@
   "mistnosti": [
     {
       "jmeno": "Satna",
-      "popis": "Mistnost vonici po potu a mentolove masti. Jsou zde rady drevenych lavicek a tva prazdna skrinka, ktera ti pripomina tvou ztratu."
+      "popis": "Mistnost vonici po potu a mentolove masti. Jsou zde rady drevenych lavicek a tva prazdna skrinka, ktera ti pripomina tvou ztratu.",
+      "predmety": [
+        {
+          "nazev": "lahev",
+          "popis": "Plastova lahev na vodu",
+          "prenositelny": true
+        },
+        {
+          "nazev": "lavice",
+          "popis": "Tezka drevena lavice",
+          "prenositelny": false
+        }
+      ],
+      "postavy": [
+        {
+          "jmeno": "Pepa",
+          "popis": "Tvuj kamarad z tymu",
+          "repliky": [
+            "Ahoj! Hledas svuj dres?",
+            "Zkus se zeptat trenera v kancelari."
+          ]
+        }
+      ]
     },
     {
       "jmeno": "Chodba",
-      "popis": "Dlouha, ozvenou znejici chodba vyzdobena plakaty historickych vitezstvi FC BZZ. Je to hlavni cast stadionu, ktera spojuje vsechny dulezite sektory."
+      "popis": "Dlouha, ozvenou znejici chodba vyzdobena plakaty historickych vitezstvi FC BZZ. Je to hlavni cast stadionu, ktera spojuje vsechny dulezite sektory.",
+      "predmety": [],
+      "postavy": []
     },
     {
       "jmeno": "Sklad",
-      "popis": "Temna mistnost s vysokymi regaly, kde jsou fotbalove mice, kuzely a roztrhane site."
+      "popis": "Temna mistnost s vysokymi regaly, kde jsou fotbalove mice, kuzely a roztrhane site.",
+      "predmety": [
+        {
+          "nazev": "mic",
+          "popis": "Fotbalovy mic",
+          "prenositelny": true
+        },
+        {
+          "nazev": "klic",
+          "popis": "Maly zlaty klic",
+          "prenositelny": true
+        }
+      ],
+      "postavy": []
     },
     {
       "jmeno": "Kancelar",
-      "popis": "Moderni, proskleny prostor s kozenymi kresly. V rohu tichounce huci lednice, ktera skryva osvezeni pro vyvolene."
+      "popis": "Moderni, proskleny prostor s kozenymi kresly. V rohu tichounce huci lednice, ktera skryva osvezeni pro vyvolene.",
+      "predmety": [
+        {
+          "nazev": "dokument",
+          "popis": "Dulezity dokument",
+          "prenositelny": true
+        }
+      ],
+      "postavy": [
+        {
+          "jmeno": "Trener",
+          "popis": "Hlavni trener FC BZZ",
+          "repliky": [
+            "Co tady delas? Mel bys trenovat!",
+            "Tvuj dres? Nekdo ho asi schoval..."
+          ]
+        }
+      ]
     },
     {
       "jmeno": "Bufet",
-      "popis": "Srdce stadionu pro fanousky. Vzduch je nasycen vuni grilovaneho masa a piva. Sedi tu ti nejvernejsi priznivci."
+      "popis": "Srdce stadionu pro fanousky. Vzduch je nasycen vuni grilovaneho masa a piva. Sedi tu ti nejvernejsi priznivci.",
+      "predmety": [
+        {
+          "nazev": "sendvic",
+          "popis": "Chutny sendvic se sunkou",
+          "prenositelny": true
+        }
+      ],
+      "postavy": [
+        {
+          "jmeno": "Bufetarka",
+          "popis": "Mila starsim pani",
+          "repliky": [
+            "Vitej mlady! Das si neco k jidlu?",
+            "Videla jsem tady podezreleho cloveka..."
+          ]
+        }
+      ]
     },
     {
       "jmeno": "Sprchy",
-      "popis": "Mistnost s bilymi kachlickami, kde se drzi para a vlhkost. Na mokre zdi je nacmaran vzkaz, ktery muze byt dulezitou stopou."
+      "popis": "Mistnost s bilymi kachlickami, kde se drzi para a vlhkost. Na mokre zdi je nacmaran vzkaz, ktery muze byt dulezitou stopou.",
+      "predmety": [],
+      "postavy": []
     },
     {
       "jmeno": "VIP loze",
-      "popis": "Prepychovy prostor s vyhledem na cele hriste. Polstrovane sedacky a drahe koberce ukryvaji tajemstvi souperova kapitana."
+      "popis": "Prepychovy prostor s vyhledem na cele hriste. Polstrovane sedacky a drahe koberce ukryvaji tajemstvi souperova kapitana.",
+      "predmety": [
+        {
+          "nazev": "pohar",
+          "popis": "Zlaty pohar z minuleho zapasu",
+          "prenositelny": false
+        }
+      ],
+      "postavy": [
+        {
+          "jmeno": "Kapitan",
+          "popis": "Kapitan soupericho tymu",
+          "repliky": [
+            "Co tady delas? Tohle je nase loze!",
+            "Uz te vidim na hristi..."
+          ]
+        }
+      ]
     },
     {
       "jmeno": "Hriste",
-      "popis": "Dokonale posekany zeleny pazit pod zaricimi reflektory. Je to misto tveho osudu, kam smis vstoupit jen jako hrdina."
+      "popis": "Dokonale posekany zeleny pazit pod zaricimi reflektory. Je to misto tveho osudu, kam smis vstoupit jen jako hrdina.",
+      "predmety": [],
+      "postavy": []
     }
   ],
   "propojeni": [
