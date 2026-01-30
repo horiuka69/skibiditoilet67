@@ -10,15 +10,19 @@ public class Hra {
         herniPlan = new HerniPlan();
         seznamPrikazu = new SeznamPrikazu();
 
-        // Registrace vsech prikazu
         seznamPrikazu.vlozPrikaz(new PrikazPomoc(seznamPrikazu));
         seznamPrikazu.vlozPrikaz(new PrikazNapoveda(herniPlan));
         seznamPrikazu.vlozPrikaz(new PrikazKonec(this));
 
-        // TODO: Zde pridat dalsi prikazy (jdi, vezmi, poloz, atd.)
+        seznamPrikazu.vlozPrikaz(new PrikazJdi(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazVezmi(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazPoloz(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazMluv(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazProzkoumej(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazInventar(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazPouzij(herniPlan));
     }
 
-    // Vrati uvitaci text hry
     public String vratUvitani() {
         return "Vitejte!\n" +
                 "Toto je nova adventura.\n" +
@@ -26,12 +30,10 @@ public class Hra {
                 herniPlan.getAktualniMistnost().getDlouhyPopis();
     }
 
-    // Vrati text pri ukonceni hry
     public String vratEpilog() {
         return "Dik, ze jste si zahrali.  Ahoj.";
     }
 
-    // Zjisti zda hra skoncila
     public boolean konecHry() {
         return konecHry;
     }
@@ -57,7 +59,6 @@ public class Hra {
         return textKVypsani;
     }
 
-    // Vrati herni plan
     public HerniPlan getHerniPlan() {
         return herniPlan;
     }

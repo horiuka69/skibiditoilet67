@@ -12,7 +12,7 @@ public class Batoh {
         predmety = new HashMap<>();
     }
 
-    // Vlozi predmet do batohu, vraci true pri uspechu
+    // Vlozi predmet do batohu
     public boolean vloz(Predmet predmet) {
         if (jePlny()) {
             return false;
@@ -21,17 +21,14 @@ public class Batoh {
         return true;
     }
 
-    // Vybere predmet z batohu
     public Predmet vyber(String nazev) {
         return predmety.remove(nazev);
     }
 
-    // Zjisti zda batoh obsahuje predmet
     public boolean obsahuje(String nazev) {
         return predmety.containsKey(nazev);
     }
 
-    // Vrati seznam veci v batohu
     public String getSeznamVeci() {
         if (predmety.isEmpty()) {
             return "Batoh je prazdny.";
@@ -39,7 +36,10 @@ public class Batoh {
         return "V batohu mas: " + String.join(", ", predmety.keySet());
     }
 
-    // Zjisti zda je batoh plny
+    public Predmet getPredmet(String nazev) {
+        return predmety.get(nazev);
+    }
+
     public boolean jePlny() {
         return predmety.size() >= KAPACITA;
     }

@@ -4,7 +4,7 @@ public class PrikazNapoveda implements IPrikaz {
 
     // Konstruktor prikazu napoveda
     public PrikazNapoveda(HerniPlan plan) {
-        // Plan neni aktualne potreba, ale muze byt v budoucnu pouzit
+
     }
 
     // Provede prikaz - zobrazi napovedu
