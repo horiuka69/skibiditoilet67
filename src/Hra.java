@@ -56,6 +56,15 @@ public class Hra {
             textKVypsani = "Nerozumim, co po mne chces. Zkus napsat 'pomoc'.";
         }
 
+        if (herniPlan.getAktualniMistnost().getNazev().equals("Hriste")) {
+            konecHry = true;
+            if (herniPlan.jeVyhra()) {
+                textKVypsani += "\n\nGRATULUJU! Mas talisman a muzes hrat finale. Vyhral jsi!";
+            } else {
+                textKVypsani += "\n\nDostal jsi se na hriste, ale nemas talisman. FC BZZ prohraje a tvoje kariera konci. Prohral jsi.";
+            }
+        }
+
         return textKVypsani;
     }
 

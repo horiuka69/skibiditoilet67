@@ -7,7 +7,6 @@ public class PrikazJdi implements IPrikaz {
         this.plan = plan;
     }
 
-
     @Override
     public String proved(String[] parametry) {
         if (parametry.length == 0) {
@@ -20,10 +19,14 @@ public class PrikazJdi implements IPrikaz {
 
         if (sousedniMistnost == null) {
             return "Tam se odsud jit neda.";
-        } else {
-            plan.getHrac().setAktualniMistnost(sousedniMistnost);
-            return sousedniMistnost.getDlouhyPopis();
         }
+
+        if (sousedniMistnost.getNazev().equals("VIP_loze") && !plan.isVipOdemceno()) {
+            return "VIP loze je zamcena. Potrebujes klic.";
+        }
+
+        plan.getHrac().setAktualniMistnost(sousedniMistnost);
+        return sousedniMistnost.getDlouhyPopis();
     }
 
     @Override

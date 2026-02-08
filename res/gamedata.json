@@ -2,48 +2,54 @@
   "mistnosti": [
     {
       "jmeno": "Satna",
-      "popis": "Mistnost vonici po potu a mentolove masti. Jsou zde rady drevenych lavicek a tva prazdna skrinka, ktera ti pripomina tvou ztratu.",
+      "popis": "Mistnost vonici po potu a mentolove masti. Tvuj dres s talismanem je pryc.",
       "predmety": [
         {
-          "nazev": "lahev",
-          "popis": "Plastova lahev na vodu",
-          "prenositelny": true
-        },
-        {
-          "nazev": "lavice",
-          "popis": "Tezka drevena lavice",
+          "nazev": "lavicka",
+          "popis": "Tezka drevena lavice, pod kterou by se dalo neco schovat.",
           "prenositelny": false
         }
       ],
       "postavy": [
         {
-          "jmeno": "Pepa",
-          "popis": "Tvuj kamarad z tymu",
+          "jmeno": "Trener",
+          "popis": "Trener Listovnik, vypada velmi nervozne.",
           "repliky": [
-            "Ahoj! Hledas svuj dres?",
-            "Zkus se zeptat trenera v kancelari."
+            "Ztratil se tvuj talisman! Bez nej nemuzeme hrat!",
+            "Slysel jsem, ze se nekdo motal u skladu materialu.",
+            "Rychle ho najdi, vykop je za par minut!"
           ]
         }
       ]
     },
     {
       "jmeno": "Chodba",
-      "popis": "Dlouha, ozvenou znejici chodba vyzdobena plakaty historickych vitezstvi FC BZZ. Je to hlavni cast stadionu, ktera spojuje vsechny dulezite sektory.",
+      "popis": "Hlavni cast stadionu. Na zdech visi plakaty slavnych vitezstvi.",
       "predmety": [],
-      "postavy": []
+      "postavy": [
+        {
+          "jmeno": "Mlzan",
+          "popis": "Tvuj nejlepsi kamarad a spoluhrac.",
+          "repliky": [
+            "Ahoj kamo, videl jsem Huberta u VIP zony s necim zlatym.",
+            "Urcite ti ho ukradl! Zkus se dostat do VIP loze.",
+            "Ale bez klice se tam nedostanes."
+          ]
+        }
+      ]
     },
     {
       "jmeno": "Sklad",
-      "popis": "Temna mistnost s vysokymi regaly, kde jsou fotbalove mice, kuzely a roztrhane site.",
+      "popis": "Mistnost plna balonu, kuzelu a siti.",
       "predmety": [
         {
-          "nazev": "mic",
-          "popis": "Fotbalovy mic",
-          "prenositelny": true
+          "nazev": "mice",
+          "popis": "Hromada fotbalovych micu. Mezi nimi neco vycniva...",
+          "prenositelny": false
         },
         {
           "nazev": "klic",
-          "popis": "Maly zlaty klic",
+          "popis": "Tezky klic s priveskem loga klubu. Pasuje do VIP loze.",
           "prenositelny": true
         }
       ],
@@ -51,76 +57,80 @@
     },
     {
       "jmeno": "Kancelar",
-      "popis": "Moderni, proskleny prostor s kozenymi kresly. V rohu tichounce huci lednice, ktera skryva osvezeni pro vyvolene.",
+      "popis": "Mistnost pro managery. V rohu tise huci lednice.",
       "predmety": [
         {
-          "nazev": "dokument",
-          "popis": "Dulezity dokument",
+          "nazev": "piti",
+          "popis": "Vychlazena lahev piva pro fanouska.",
           "prenositelny": true
+        },
+        {
+          "nazev": "pohar",
+          "popis": "Obri stribrna trofej, vazi aspon 20 kilo.",
+          "prenositelny": false
         }
       ],
-      "postavy": [
-        {
-          "jmeno": "Trener",
-          "popis": "Hlavni trener FC BZZ",
-          "repliky": [
-            "Co tady delas? Mel bys trenovat!",
-            "Tvuj dres? Nekdo ho asi schoval..."
-          ]
-        }
-      ]
+      "postavy": []
     },
     {
       "jmeno": "Bufet",
-      "popis": "Srdce stadionu pro fanousky. Vzduch je nasycen vuni grilovaneho masa a piva. Sedi tu ti nejvernejsi priznivci.",
+      "popis": "Mistnost vonici po klobasach. Sedi tu fanynka Kvetuse.",
       "predmety": [
         {
           "nazev": "sendvic",
-          "popis": "Chutny sendvic se sunkou",
+          "popis": "Chutny sendvic na posilnenou.",
           "prenositelny": true
         }
       ],
       "postavy": [
         {
-          "jmeno": "Bufetarka",
-          "popis": "Mila starsim pani",
+          "jmeno": "Kvetuse",
+          "popis": "Starsi pani, ktera prodava klobasy. Vypada smutne.",
           "repliky": [
-            "Vitej mlady! Das si neco k jidlu?",
-            "Videla jsem tady podezreleho cloveka..."
+            "Ti rousni fanousci me vyhnali od pipy! Mam takovou zizen!",
+            "Kdybych mela neco k piti, mozna bych si vzpomnela, co Hubert rikal...",
+            "Dones mi prosim neco z kancelare."
           ]
         }
       ]
     },
     {
       "jmeno": "Sprchy",
-      "popis": "Mistnost s bilymi kachlickami, kde se drzi para a vlhkost. Na mokre zdi je nacmaran vzkaz, ktery muze byt dulezitou stopou.",
-      "predmety": [],
+      "popis": "Mistnost s bilymi kachlickami. Na zdi je vzkaz.",
+      "predmety": [
+        {
+          "nazev": "vzkaz",
+          "popis": "Na zdi je napsano: 'Hubert je zlodej!'",
+          "prenositelny": false
+        }
+      ],
       "postavy": []
     },
     {
-      "jmeno": "VIP loze",
-      "popis": "Prepychovy prostor s vyhledem na cele hriste. Polstrovane sedacky a drahe koberce ukryvaji tajemstvi souperova kapitana.",
+      "jmeno": "VIP_loze",
+      "popis": "Prepychovy prostor s vyhledem na hriste. Kapitan nepritele se ti smeje.",
       "predmety": [
         {
-          "nazev": "pohar",
-          "popis": "Zlaty pohar z minuleho zapasu",
-          "prenositelny": false
+          "nazev": "talisman",
+          "popis": "Zlata kopacka! Tvuj rodinny talisman.",
+          "prenositelny": true
         }
       ],
       "postavy": [
         {
-          "jmeno": "Kapitan",
-          "popis": "Kapitan soupericho tymu",
+          "jmeno": "Hubert",
+          "popis": "Arogantni kapitan soupere.",
           "repliky": [
-            "Co tady delas? Tohle je nase loze!",
-            "Uz te vidim na hristi..."
+            "Bez tohoto talismanu jsi jen polovicni hrac!",
+            "Tuhle botu uz nikdy neuvidis na hristi.",
+            "FC BZZ dneska prohraje!"
           ]
         }
       ]
     },
     {
       "jmeno": "Hriste",
-      "popis": "Dokonale posekany zeleny pazit pod zaricimi reflektory. Je to misto tveho osudu, kam smis vstoupit jen jako hrdina.",
+      "popis": "Zeleny travnik pod reflektory. Zde se rozhodne.",
       "predmety": [],
       "postavy": []
     }
@@ -168,14 +178,18 @@
     },
     {
       "odkud": "Bufet",
-      "kam": "VIP loze"
+      "kam": "VIP_loze"
     },
     {
-      "odkud": "VIP loze",
+      "odkud": "VIP_loze",
       "kam": "Bufet"
     },
     {
-      "odkud": "VIP loze",
+      "odkud": "VIP_loze",
+      "kam": "Hriste"
+    },
+    {
+      "odkud": "Sprchy",
       "kam": "Hriste"
     }
   ],
