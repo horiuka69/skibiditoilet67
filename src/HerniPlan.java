@@ -4,6 +4,7 @@ public class HerniPlan {
 
     private Hrac hrac;
     private boolean vipOdemceno = false;
+    private boolean kvetuseNapojena = false;
 
     public HerniPlan() {
         zalozProstorHry();
@@ -32,7 +33,9 @@ public class HerniPlan {
     }
 
     public boolean jeVyhra() {
-        return hrac.getAktualniMistnost().getNazev().equals("Hriste") && hrac.getBatoh().obsahuje("talisman");
+        // Vyhra je pokud je hrac na hristi a ma talisman (ignorujeme case pro nazev
+        // mistnosti pro jistotu)
+        return hrac.getAktualniMistnost().getNazev().equalsIgnoreCase("Hriste") && hrac.getBatoh().obsahuje("talisman");
     }
 
     public boolean isVipOdemceno() {
@@ -41,5 +44,13 @@ public class HerniPlan {
 
     public void setVipOdemceno(boolean vipOdemceno) {
         this.vipOdemceno = vipOdemceno;
+    }
+
+    public boolean isKvetuseNapojena() {
+        return kvetuseNapojena;
+    }
+
+    public void setKvetuseNapojena(boolean kvetuseNapojena) {
+        this.kvetuseNapojena = kvetuseNapojena;
     }
 }

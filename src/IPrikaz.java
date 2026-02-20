@@ -1,8 +1,8 @@
-    //Rozhraní definující metody pro všechny příkazy ve hře.
+    //Rozhrani definujici metody pro vsechny prikazy ve hre.
 
 public interface IPrikaz {
 
-    // Metoda pro provedení příkazu.
+    // Metoda pro provedeni prikazu.
 
 
     String proved(String[] parametry);

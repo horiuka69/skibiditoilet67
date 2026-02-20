@@ -11,7 +11,7 @@ public class Main {
 
         // Hlavni herni smycka
         Scanner scanner = new Scanner(System.in);
-        while (!hra.konecHry()) {
+        while (!hra.konecHry() && scanner.hasNextLine()) {
             System.out.print("\n> ");
             String radek = scanner.nextLine();
             String odpoved = hra.zpracujPrikaz(radek);

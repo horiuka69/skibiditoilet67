@@ -16,6 +16,15 @@ public class PrikazProzkoumej implements IPrikaz {
         Mistnost aktualniMistnost = plan.getAktualniMistnost();
         Batoh batoh = plan.getHrac().getBatoh();
 
+        // Specialni logika pro nalezeni klice
+        if (nazev.equalsIgnoreCase("mice") && aktualniMistnost.getNazev().equalsIgnoreCase("Sklad")) {
+            if (!aktualniMistnost.obsahujePredmet("klic") && !batoh.obsahuje("klic")) {
+                Predmet klic = new Predmet("klic", "Tezky klic s priveskem loga klubu. Pasuje do VIP loze.", true);
+                aktualniMistnost.vlozPredmet(klic);
+                return "Prozkoumal jsi hromadu micu a nasel jsi klic!";
+            }
+        }
+
         // Prohledame mistnost - predmety
         if (aktualniMistnost.obsahujePredmet(nazev)) {
             return aktualniMistnost.getPredmet(nazev).getPopis();

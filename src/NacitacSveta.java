@@ -11,129 +11,143 @@ import java.util.regex.Pattern;
 // Nacita herni svet ze souboru JSON bez externich knihoven
 public class NacitacSveta {
 
-    // Nacte svet z JSON souboru a vrati startovni mistnost
     public static Mistnost nacistSvet(String cestaKSouboru) throws IOException {
         String obsah = new String(Files.readAllBytes(Paths.get(cestaKSouboru)));
 
         Map<String, Mistnost> mistnosti = new HashMap<>();
 
-        // 1. Nacteni mistnosti s predmety a postavami
-        Pattern pMistnost = Pattern.compile(
-                "\\{\\s*\"jmeno\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"popis\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"predmety\"\\s*:\\s*\\[([^\\]]*)\\]\\s*,\\s*\"postavy\"\\s*:\\s*\\[([^\\]]*)\\]\\s*\\}",
-                Pattern.DOTALL);
+        // 1. Najdeme blok mistnosti
+        String mistnostiBlok = extrahujPole(obsah, "mistnosti");
+        if (mistnostiBlok != null) {
+            // Rozdelime na jednotlive objekty mistnosti - hledame zacatek objektu { "jmeno"
+            // Protoze mistnosti mohou byt v poli oddeleny carkou, budeme hledat podle
+            // klicu.
+            List<String> objektyMistnosti = splitObjects(mistnostiBlok);
+            for (String obj : objektyMistnosti) {
+                String jmeno = extrahujHodnotu(obj, "jmeno");
+                String popis = extrahujHodnotu(obj, "popis");
 
-        Matcher mMistnost = pMistnost.matcher(obsah);
+                if (jmeno != null) {
+                    Mistnost mistnost = new Mistnost(jmeno, popis);
 
-        while (mMistnost.find()) {
-            String jmeno = mMistnost.group(1);
-            String popis = mMistnost.group(2);
-            String predmetyStr = mMistnost.group(3);
-            String postavyStr = mMistnost.group(4);
+                    String predmetyStr = extrahujPole(obj, "predmety");
+                    if (predmetyStr != null) {
+                        for (String pObj : splitObjects(predmetyStr)) {
+                            String pNazev = extrahujHodnotu(pObj, "nazev");
+                            String pPopis = extrahujHodnotu(pObj, "popis");
+                            boolean pPrenos = "true".equalsIgnoreCase(extrahujHodnotu(pObj, "prenositelny"));
+                            if (pNazev != null) {
+                                mistnost.vlozPredmet(new Predmet(pNazev, pPopis, pPrenos));
+                            }
+                        }
+                    }
 
-            Mistnost mistnost = new Mistnost(jmeno, popis);
-
-            // Parsovani predmetu
-            if (predmetyStr != null && !predmetyStr.trim().isEmpty()) {
-                List<Predmet> predmety = parsujPredmety(predmetyStr);
-                for (Predmet p : predmety) {
-                    mistnost.vlozPredmet(p);
+                    String postavyStr = extrahujPole(obj, "postavy");
+                    if (postavyStr != null) {
+                        for (String postObj : splitObjects(postavyStr)) {
+                            String postJmeno = extrahujHodnotu(postObj, "jmeno");
+                            String postPopis = extrahujHodnotu(postObj, "popis");
+                            if (postJmeno != null) {
+                                Postava postava = new Postava(postJmeno, postPopis);
+                                String replikyStr = extrahujPole(postObj, "repliky");
+                                if (replikyStr != null) {
+                                    Pattern pReplika = Pattern.compile("\"([^\"]+)\"");
+                                    Matcher mReplika = pReplika.matcher(replikyStr);
+                                    while (mReplika.find()) {
+                                        postava.pridejRepliku(mReplika.group(1));
+                                    }
+                                }
+                                mistnost.vlozPostavu(postava);
+                            }
+                        }
+                    }
+                    mistnosti.put(jmeno, mistnost);
                 }
             }
-
-            // Parsovani postav
-            if (postavyStr != null && !postavyStr.trim().isEmpty()) {
-                List<Postava> postavy = parsujPostavy(postavyStr);
-                for (Postava p : postavy) {
-                    mistnost.vlozPostavu(p);
-                }
-            }
-
-            mistnosti.put(jmeno, mistnost);
         }
 
         // 2. Nacteni propojeni
-        Pattern pPropojeni = Pattern.compile(
-                "\\{\\s*\"odkud\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"kam\"\\s*:\\s*\"([^\"]+)\"\\s*\\}");
-        Matcher mPropojeni = pPropojeni.matcher(obsah);
-
-        while (mPropojeni.find()) {
-            String odkud = mPropojeni.group(1);
-            String kam = mPropojeni.group(2);
-
-            Mistnost mOdkud = mistnosti.get(odkud);
-            Mistnost mKam = mistnosti.get(kam);
-
-            if (mOdkud != null && mKam != null) {
-                mOdkud.setVychod(mKam);
+        String propojeniBlok = extrahujPole(obsah, "propojeni");
+        if (propojeniBlok != null) {
+            for (String propObj : splitObjects(propojeniBlok)) {
+                String odkud = extrahujHodnotu(propObj, "odkud");
+                String kam = extrahujHodnotu(propObj, "kam");
+                if (odkud != null && kam != null) {
+                    Mistnost mOdkud = mistnosti.get(odkud);
+                    Mistnost mKam = mistnosti.get(kam);
+                    if (mOdkud != null && mKam != null) {
+                        mOdkud.setVychod(mKam);
+                    }
+                }
             }
         }
 
         // 3. Nacteni startu
-        Pattern pStart = Pattern.compile("\"start\"\\s*:\\s*\"([^\"]+)\"");
-        Matcher mStart = pStart.matcher(obsah);
-        String startName = null;
-        if (mStart.find()) {
-            startName = mStart.group(1);
-        }
-
+        String startName = extrahujHodnotu(obsah, "start");
         if (startName != null && mistnosti.containsKey(startName)) {
             return mistnosti.get(startName);
-        } else {
-            if (!mistnosti.isEmpty()) {
-                return mistnosti.values().iterator().next();
-            }
+        } else if (!mistnosti.isEmpty()) {
+            return mistnosti.values().iterator().next();
+        }
+        return null;
+    }
+
+    private static String extrahujHodnotu(String json, String klic) {
+        Pattern p = Pattern.compile("\"" + klic + "\"\\s*:\\s*\"([^\"]*)\"");
+        Matcher m = p.matcher(json);
+        if (m.find()) {
+            return m.group(1);
+        }
+        // Zkusime najit boolean/cislo bez uvozovek
+        p = Pattern.compile("\"" + klic + "\"\\s*:\\s*([^\\s,}\\]]+)");
+        m = p.matcher(json);
+        if (m.find()) {
+            return m.group(1);
+        }
+        return null;
+    }
+
+    private static String extrahujPole(String json, String klic) {
+        int index = json.indexOf("\"" + klic + "\"");
+        if (index == -1)
             return null;
-        }
-    }
+        int zacatek = json.indexOf("[", index);
+        if (zacatek == -1)
+            return null;
 
-    // Parsuje predmety z JSON retezce
-    private static List<Predmet> parsujPredmety(String predmetyStr) {
-        List<Predmet> predmety = new ArrayList<>();
-
-        Pattern pPredmet = Pattern.compile(
-                "\\{\\s*\"nazev\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"popis\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"prenositelny\"\\s*:\\s*(true|false)\\s*\\}",
-                Pattern.DOTALL);
-
-        Matcher m = pPredmet.matcher(predmetyStr);
-        while (m.find()) {
-            String nazev = m.group(1);
-            String popis = m.group(2);
-            boolean prenositelny = Boolean.parseBoolean(m.group(3));
-
-            predmety.add(new Predmet(nazev, popis, prenositelny));
-        }
-
-        return predmety;
-    }
-
-    // Parsuje postavy z JSON retezce
-    private static List<Postava> parsujPostavy(String postavyStr) {
-        List<Postava> postavy = new ArrayList<>();
-
-        Pattern pPostava = Pattern.compile(
-                "\\{\\s*\"jmeno\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"popis\"\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"repliky\"\\s*:\\s*\\[([^\\]]*)\\]\\s*\\}",
-                Pattern.DOTALL);
-
-        Matcher m = pPostava.matcher(postavyStr);
-        while (m.find()) {
-            String jmeno = m.group(1);
-            String popis = m.group(2);
-            String replikyStr = m.group(3);
-
-            Postava postava = new Postava(jmeno, popis);
-
-            // Parsovani replik
-            if (replikyStr != null && !replikyStr.trim().isEmpty()) {
-                Pattern pReplika = Pattern.compile("\"([^\"]+)\"");
-                Matcher mReplika = pReplika.matcher(replikyStr);
-                while (mReplika.find()) {
-                    postava.pridejRepliku(mReplika.group(1));
+        int hloubka = 0;
+        for (int i = zacatek; i < json.length(); i++) {
+            char c = json.charAt(i);
+            if (c == '[')
+                hloubka++;
+            else if (c == ']') {
+                hloubka--;
+                if (hloubka == 0) {
+                    return json.substring(zacatek + 1, i);
                 }
             }
-
-            postavy.add(postava);
         }
+        return null;
+    }
 
-        return postavy;
+    private static List<String> splitObjects(String poleStr) {
+        List<String> objekty = new ArrayList<>();
+        int hloubka = 0;
+        int zacatek = -1;
+        for (int i = 0; i < poleStr.length(); i++) {
+            char c = poleStr.charAt(i);
+            if (c == '{') {
+                if (hloubka == 0)
+                    zacatek = i;
+                hloubka++;
+            } else if (c == '}') {
+                hloubka--;
+                if (hloubka == 0 && zacatek != -1) {
+                    objekty.add(poleStr.substring(zacatek, i + 1));
+                    zacatek = -1;
+                }
+            }
+        }
+        return objekty;
     }
 }

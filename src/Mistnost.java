@@ -54,7 +54,12 @@ public class Mistnost {
 
     // Vrati mistnost v danem smeru
     public Mistnost vratVychod(String nazevSouseda) {
-        return vychody.get(nazevSouseda);
+        for (String klic : vychody.keySet()) {
+            if (klic.equalsIgnoreCase(nazevSouseda)) {
+                return vychody.get(klic);
+            }
+        }
+        return null;
     }
 
     // Vrati vsechny vychody
@@ -71,17 +76,34 @@ public class Mistnost {
 
     // Vezme predmet z mistnosti
     public Predmet vezmiPredmet(String nazevPredmetu) {
-        return predmety.remove(nazevPredmetu);
+        String klicKNalezeni = null;
+        for (String klic : predmety.keySet()) {
+            if (klic.equalsIgnoreCase(nazevPredmetu)) {
+                klicKNalezeni = klic;
+                break;
+            }
+        }
+        return klicKNalezeni != null ? predmety.remove(klicKNalezeni) : null;
     }
 
     // Zjisti zda mistnost obsahuje predmet
     public boolean obsahujePredmet(String nazevPredmetu) {
-        return predmety.containsKey(nazevPredmetu);
+        for (String klic : predmety.keySet()) {
+            if (klic.equalsIgnoreCase(nazevPredmetu)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // Vrati predmet bez jeho odstraneni
     public Predmet getPredmet(String nazevPredmetu) {
-        return predmety.get(nazevPredmetu);
+        for (String klic : predmety.keySet()) {
+            if (klic.equalsIgnoreCase(nazevPredmetu)) {
+                return predmety.get(klic);
+            }
+        }
+        return null;
     }
 
     // Vlozi postavu do mistnosti
@@ -93,6 +115,11 @@ public class Mistnost {
 
     // Vrati postavu z mistnosti
     public Postava getPostava(String jmeno) {
-        return postavy.get(jmeno);
+        for (String klic : postavy.keySet()) {
+            if (klic.equalsIgnoreCase(jmeno)) {
+                return postavy.get(klic);
+            }
+        }
+        return null;
     }
 }

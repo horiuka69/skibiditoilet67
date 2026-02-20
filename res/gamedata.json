@@ -2,7 +2,7 @@
   "mistnosti": [
     {
       "jmeno": "Satna",
-      "popis": "Mistnost vonici po potu a mentolove masti. Tvuj dres s talismanem je pryc.",
+      "popis": "Mistnost vonici po potu a mentolove masti. Tvuj talisman je pryc.",
       "predmety": [
         {
           "nazev": "lavicka",
@@ -16,7 +16,7 @@
           "popis": "Trener Listovnik, vypada velmi nervozne.",
           "repliky": [
             "Ztratil se tvuj talisman! Bez nej nemuzeme hrat!",
-            "Slysel jsem, ze se nekdo motal u skladu materialu.",
+            "Videl jsem u skladu materialu nejaky podezrely pohyb.",
             "Rychle ho najdi, vykop je za par minut!"
           ]
         }
@@ -31,8 +31,8 @@
           "jmeno": "Mlzan",
           "popis": "Tvuj nejlepsi kamarad a spoluhrac.",
           "repliky": [
-            "Ahoj kamo, videl jsem Huberta u VIP zony s necim zlatym.",
-            "Urcite ti ho ukradl! Zkus se dostat do VIP loze.",
+            "Ahoj kamo, tvuj talisman uz asi ma Hubert.",
+            "Urcite ho schoval nekde v luxusni casti stadionu (VIP zone).",
             "Ale bez klice se tam nedostanes."
           ]
         }
@@ -44,13 +44,8 @@
       "predmety": [
         {
           "nazev": "mice",
-          "popis": "Hromada fotbalovych micu. Mezi nimi neco vycniva...",
+          "popis": "Hromada fotbalovych micu.",
           "prenositelny": false
-        },
-        {
-          "nazev": "klic",
-          "popis": "Tezky klic s priveskem loga klubu. Pasuje do VIP loze.",
-          "prenositelny": true
         }
       ],
       "postavy": []
@@ -61,13 +56,8 @@
       "predmety": [
         {
           "nazev": "piti",
-          "popis": "Vychlazena lahev piva pro fanouska.",
+          "popis": "Vychlazena lahev piva pro fanynku.",
           "prenositelny": true
-        },
-        {
-          "nazev": "pohar",
-          "popis": "Obri stribrna trofej, vazi aspon 20 kilo.",
-          "prenositelny": false
         }
       ],
       "postavy": []
@@ -75,35 +65,22 @@
     {
       "jmeno": "Bufet",
       "popis": "Mistnost vonici po klobasach. Sedi tu fanynka Kvetuse.",
-      "predmety": [
-        {
-          "nazev": "sendvic",
-          "popis": "Chutny sendvic na posilnenou.",
-          "prenositelny": true
-        }
-      ],
+      "predmety": [],
       "postavy": [
         {
           "jmeno": "Kvetuse",
-          "popis": "Starsi pani, ktera prodava klobasy. Vypada smutne.",
+          "popis": "Fanynka Kvetuse, ktera vypada, ze ma velkou zizen.",
           "repliky": [
-            "Ti rousni fanousci me vyhnali od pipy! Mam takovou zizen!",
-            "Kdybych mela neco k piti, mozna bych si vzpomnela, co Hubert rikal...",
-            "Dones mi prosim neco z kancelare."
+            "Nepustim te dal, dokud se nenapiju!",
+            "Dones mi neco k piti z kancelare a mozna te necham projit k VIP lozi."
           ]
         }
       ]
     },
     {
       "jmeno": "Sprchy",
-      "popis": "Mistnost s bilymi kachlickami. Na zdi je vzkaz.",
-      "predmety": [
-        {
-          "nazev": "vzkaz",
-          "popis": "Na zdi je napsano: 'Hubert je zlodej!'",
-          "prenositelny": false
-        }
-      ],
+      "popis": "Mistnost s bilymi kachlickami.",
+      "predmety": [],
       "postavy": []
     },
     {
@@ -121,8 +98,6 @@
           "jmeno": "Hubert",
           "popis": "Arogantni kapitan soupere.",
           "repliky": [
-            "Bez tohoto talismanu jsi jen polovicni hrac!",
-            "Tuhle botu uz nikdy neuvidis na hristi.",
             "FC BZZ dneska prohraje!"
           ]
         }

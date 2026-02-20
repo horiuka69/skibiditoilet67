@@ -22,11 +22,23 @@ public class Batoh {
     }
 
     public Predmet vyber(String nazev) {
-        return predmety.remove(nazev);
+        String klicKNalezeni = null;
+        for (String klic : predmety.keySet()) {
+            if (klic.equalsIgnoreCase(nazev)) {
+                klicKNalezeni = klic;
+                break;
+            }
+        }
+        return klicKNalezeni != null ? predmety.remove(klicKNalezeni) : null;
     }
 
     public boolean obsahuje(String nazev) {
-        return predmety.containsKey(nazev);
+        for (String klic : predmety.keySet()) {
+            if (klic.equalsIgnoreCase(nazev)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getSeznamVeci() {
@@ -37,7 +49,12 @@ public class Batoh {
     }
 
     public Predmet getPredmet(String nazev) {
-        return predmety.get(nazev);
+        for (String klic : predmety.keySet()) {
+            if (klic.equalsIgnoreCase(nazev)) {
+                return predmety.get(klic);
+            }
+        }
+        return null;
     }
 
     public boolean jePlny() {

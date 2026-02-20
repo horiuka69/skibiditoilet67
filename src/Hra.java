@@ -21,17 +21,18 @@ public class Hra {
         seznamPrikazu.vlozPrikaz(new PrikazProzkoumej(herniPlan));
         seznamPrikazu.vlozPrikaz(new PrikazInventar(herniPlan));
         seznamPrikazu.vlozPrikaz(new PrikazPouzij(herniPlan));
+        seznamPrikazu.vlozPrikaz(new PrikazDej(herniPlan));
     }
 
     public String vratUvitani() {
         return "Vitejte!\n" +
-                "Toto je nova adventura.\n" +
+                "Pribeh ztraceneho talismanu na zapase FC BZZ.\n" +
                 "Napiste 'pomoc', pokud si nevite rady.\n\n" +
                 herniPlan.getAktualniMistnost().getDlouhyPopis();
     }
 
     public String vratEpilog() {
-        return "Dik, ze jste si zahrali.  Ahoj.";
+        return "Diky, ze jste si zahrali. ";
     }
 
     public boolean konecHry() {
@@ -40,8 +41,12 @@ public class Hra {
 
     // Zpracuje prikaz od hrace
     public String zpracujPrikaz(String radek) {
-        String[] slova = radek.split(" ");
-        String slovoPrikazu = slova[0];
+        if (radek == null || radek.trim().isEmpty()) {
+            return "Neco musis napsat.";
+        }
+
+        String[] slova = radek.trim().split("\\s+");
+        String slovoPrikazu = slova[0].toLowerCase();
         String[] parametry = new String[slova.length - 1];
 
         for (int i = 0; i < parametry.length; i++) {
@@ -56,12 +61,12 @@ public class Hra {
             textKVypsani = "Nerozumim, co po mne chces. Zkus napsat 'pomoc'.";
         }
 
-        if (herniPlan.getAktualniMistnost().getNazev().equals("Hriste")) {
+        if (herniPlan.getAktualniMistnost().getNazev().equalsIgnoreCase("Hriste")) {
             konecHry = true;
             if (herniPlan.jeVyhra()) {
                 textKVypsani += "\n\nGRATULUJU! Mas talisman a muzes hrat finale. Vyhral jsi!";
             } else {
-                textKVypsani += "\n\nDostal jsi se na hriste, ale nemas talisman. FC BZZ prohraje a tvoje kariera konci. Prohral jsi.";
+                textKVypsani += "\n\nDostal ses na hriste, ale nemas talisman. FC BZZ prohraje a tvoje kariera konci. Prohral jsi.";
             }
         }
 

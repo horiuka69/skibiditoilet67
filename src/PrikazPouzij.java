@@ -21,8 +21,8 @@ public class PrikazPouzij implements IPrikaz {
 
         String mistnost = plan.getAktualniMistnost().getNazev();
 
-        if (nazev.equals("klic")) {
-            if (mistnost.equals("Bufet")) {
+        if (nazev.equalsIgnoreCase("klic")) {
+            if (mistnost.equalsIgnoreCase("Bufet")) {
                 plan.setVipOdemceno(true);
                 return "Odemkl jsi VIP lozi.";
             } else {
@@ -30,10 +30,11 @@ public class PrikazPouzij implements IPrikaz {
             }
         }
 
-        if (nazev.equals("piti")) {
-            if (mistnost.equals("Bufet")) {
+        if (nazev.equalsIgnoreCase("piti")) {
+            if (mistnost.equalsIgnoreCase("Bufet")) {
                 batoh.vyber("piti");
-                return "Dal jsi fanynce Kvetusi piti. Uklidnila se a rekla ti: 'Hubert schoval klic ve skladu v hromade micu!'";
+                plan.setKvetuseNapojena(true);
+                return "Dal jsi fanynce Kvetusi piti. Uklidnila se a rekla ti: 'Videl jsem Huberta, jak bezi k VIP lozi s necim pod dresem!'";
             } else {
                 return "Tady neni nikdo, komu bys piti dal.";
             }

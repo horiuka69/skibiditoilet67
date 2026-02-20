@@ -21,7 +21,7 @@ public class PrikazVezmi implements IPrikaz {
 
         Predmet predmet = aktualniMistnost.getPredmet(nazev);
         if (!predmet.jePrenositelny()) {
-            return "To neunese.";
+            return "To neuneses.";
         }
 
         Batoh batoh = plan.getHrac().getBatoh();
