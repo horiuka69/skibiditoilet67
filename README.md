@@ -1,4 +1,4 @@
-# Fotbalová Adventura - Skibidi Toilet 67
+# Fotbalová Adventura
 
 ## Popis hry
 Tato hra je textová adventura, ve které se vžijete do role fotbalisty týmu FC BZZ. Před nejdůležitějším finále sezóny se vám ztratil váš rodinný talisman – Zlatá kopačka. Bez něj se cítíte jen jako poloviční hráč a vašemu týmu hrozí prohra. Vaším úkolem je projít útroby stadionu, promluvit si se spoluhráči a personálem, najít klíč k VIP loži a získat svůj talisman zpět dříve, než začne zápas.
