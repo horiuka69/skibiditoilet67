@@ -1,15 +1,22 @@
 
+/**
+ * Trida Hra predstavuje logiku cele hry.
+ * Stara se o inicializaci, zpracovani prikazu a kontrolu konce hry.
+ */
 public class Hra {
 
-    private HerniPlan herniPlan;
-    private boolean konecHry = false;
-    private SeznamPrikazu seznamPrikazu;
+    private HerniPlan herniPlan; // Reference na herni plan (svet hry)
+    private boolean konecHry = false; // Flag urcujici, zda hra jiz skoncila
+    private SeznamPrikazu seznamPrikazu; // Seznam vsech platnych prikazu
 
-    // Vytvori hru, inicializuje mistnosti a prikazy
+    /**
+     * Konstruktor, ktery vytvori hru a inicializuje mistnosti a prikazy.
+     */
     public Hra() {
         herniPlan = new HerniPlan();
         seznamPrikazu = new SeznamPrikazu();
 
+        // Registrace vsech prikazu, ktere lze ve hre pouzit
         seznamPrikazu.vlozPrikaz(new PrikazPomoc(seznamPrikazu));
         seznamPrikazu.vlozPrikaz(new PrikazNapoveda(herniPlan));
         seznamPrikazu.vlozPrikaz(new PrikazKonec(this));
@@ -24,6 +31,9 @@ public class Hra {
         seznamPrikazu.vlozPrikaz(new PrikazDej(herniPlan));
     }
 
+    /**
+     * Vraci uvitaci text pro hrace na zacatku hry.
+     */
     public String vratUvitani() {
         return "Vitejte!\n" +
                 "Pribeh ztraceneho talismanu na zapase FC BZZ.\n" +
@@ -31,29 +41,45 @@ public class Hra {
                 herniPlan.getAktualniMistnost().getDlouhyPopis();
     }
 
+    /**
+     * Vraci text, ktery se vypise pri ukonceni hry.
+     */
     public String vratEpilog() {
         return "Diky, ze jste si zahrali. ";
     }
 
+    /**
+     * Informuje o tom, zda hra skoncila.
+     */
     public boolean konecHry() {
         return konecHry;
     }
 
-    // Zpracuje prikaz od hrace
+    /**
+     * Metoda, ktera zpracuje vlozeny radek textu jako prikaz.
+     * 
+     * @param radek Radek textu zadany hracem.
+     * @return Odpoved hry na zadany prikaz.
+     */
+
     public String zpracujPrikaz(String radek) {
+        // Kontrola prazdneho vstupu
         if (radek == null || radek.trim().isEmpty()) {
             return "Neco musis napsat.";
         }
 
+        // Rozdeleni vstupu na slova
         String[] slova = radek.trim().split("\\s+");
         String slovoPrikazu = slova[0].toLowerCase();
         String[] parametry = new String[slova.length - 1];
 
+        // Naplneni parametru prikazu
         for (int i = 0; i < parametry.length; i++) {
             parametry[i] = slova[i + 1];
         }
 
         String textKVypsani;
+        // Overeni, zda je zadany prikaz platny
         if (seznamPrikazu.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = seznamPrikazu.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.proved(parametry);
@@ -61,6 +87,7 @@ public class Hra {
             textKVypsani = "Nerozumim, co po mne chces. Zkus napsat 'pomoc'.";
         }
 
+        // Kontrola vitezne nebo proherni podminky v konkretni mistnosti
         if (herniPlan.getAktualniMistnost().getNazev().equalsIgnoreCase("Hriste")) {
             konecHry = true;
             if (herniPlan.jeVyhra()) {
@@ -73,11 +100,16 @@ public class Hra {
         return textKVypsani;
     }
 
+    /**
+     * Vraci herni plan (svet hry).
+     */
     public HerniPlan getHerniPlan() {
         return herniPlan;
     }
 
-    // Nastavi konec hry
+    /**
+     * Umoznuje manualne nastavit konec hry.
+     */
     public void setKonecHry(boolean konecHry) {
         this.konecHry = konecHry;
     }

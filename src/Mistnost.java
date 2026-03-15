@@ -4,16 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-// Mistnost ve hre
+/**
+ * Trida Mistnost reprezentuje jednotlivou lokaci ve hre.
+ * Mistnost v sobe udrzuje mozne vychody, predmety a postavy, ktere se v ni nachazi.
+ */
 public class Mistnost {
 
-    private String nazev;
-    private String popis;
-    private Map<String, Mistnost> vychody;
-    private Map<String, Predmet> predmety;
-    private Map<String, Postava> postavy;
+    private String nazev; // Nazev mistnosti
+    private String popis; // Popis mistnosti
+    private Map<String, Mistnost> vychody; // Sousedni mistnosti
+    private Map<String, Predmet> predmety; // Predmety v mistnosti
+    private Map<String, Postava> postavy; // Postavy v mistnosti
 
-    // Vytvori mistnost
+    /**
+     * Konstruktor, vytvori mistnost se zadanym nazvem a popisem.
+     */
     public Mistnost(String nazev, String popis) {
         this.nazev = nazev;
         this.popis = popis;
@@ -22,19 +27,25 @@ public class Mistnost {
         this.postavy = new HashMap<>();
     }
 
-    // Nastavi vychod do vedlejsi mistnosti
+    /**
+     * Definuje vychod z teto mistnosti do jine.
+     */
     public void setVychod(Mistnost vedlejsi) {
         if (vedlejsi != null) {
             vychody.put(vedlejsi.getNazev(), vedlejsi);
         }
     }
 
-    // Vrati nazev mistnosti
+    /**
+     * Vraci nazev mistnosti.
+     */
     public String getNazev() {
         return nazev;
     }
 
-    // Vrati detailni popis mistnosti s vychody, predmety a postavami
+    /**
+     * Vraci podrobny popis mistnosti vcetne seznamu vychodu, predmetu a postav.
+     */
     public String getDlouhyPopis() {
         StringBuilder sb = new StringBuilder();
         sb.append("Jsi v mistnosti/lokaci ").append(nazev).append(".\n");
@@ -52,7 +63,11 @@ public class Mistnost {
         return sb.toString();
     }
 
-    // Vrati mistnost v danem smeru
+    /**
+     * Vraci mistnost, ktera sousedi s touto mistnosti v danem smeru.
+     * @param nazevSouseda Nazev cilove mistnosti.
+     * @return Objekt Mistnost nebo null, pokud tam neni vychod.
+     */
     public Mistnost vratVychod(String nazevSouseda) {
         for (String klic : vychody.keySet()) {
             if (klic.equalsIgnoreCase(nazevSouseda)) {
@@ -62,19 +77,25 @@ public class Mistnost {
         return null;
     }
 
-    // Vrati vsechny vychody
+    /**
+     * Vraci kolekci vsech dostupnych vychodu z teto mistnosti.
+     */
     public Collection<Mistnost> getVychody() {
         return Collections.unmodifiableCollection(vychody.values());
     }
 
-    // Vlozi predmet do mistnosti
+    /**
+     * Vlozi predmet do mistnosti.
+     */
     public void vlozPredmet(Predmet predmet) {
         if (predmet != null) {
             predmety.put(predmet.getNazev(), predmet);
         }
     }
 
-    // Vezme predmet z mistnosti
+    /**
+     * Odstrani a vrati predmet z mistnosti podle nazvu.
+     */
     public Predmet vezmiPredmet(String nazevPredmetu) {
         String klicKNalezeni = null;
         for (String klic : predmety.keySet()) {
@@ -86,7 +107,9 @@ public class Mistnost {
         return klicKNalezeni != null ? predmety.remove(klicKNalezeni) : null;
     }
 
-    // Zjisti zda mistnost obsahuje predmet
+    /**
+     * Zjisti, zda se v mistnosti nachazi konkretni predmet.
+     */
     public boolean obsahujePredmet(String nazevPredmetu) {
         for (String klic : predmety.keySet()) {
             if (klic.equalsIgnoreCase(nazevPredmetu)) {
@@ -96,7 +119,9 @@ public class Mistnost {
         return false;
     }
 
-    // Vrati predmet bez jeho odstraneni
+    /**
+     * Vraci referenci na predmet v mistnosti bez jeho odstraneni.
+     */
     public Predmet getPredmet(String nazevPredmetu) {
         for (String klic : predmety.keySet()) {
             if (klic.equalsIgnoreCase(nazevPredmetu)) {
@@ -106,14 +131,18 @@ public class Mistnost {
         return null;
     }
 
-    // Vlozi postavu do mistnosti
+    /**
+     * Vlozi postavu do mistnosti.
+     */
     public void vlozPostavu(Postava postava) {
         if (postava != null) {
             postavy.put(postava.getJmeno(), postava);
         }
     }
 
-    // Vrati postavu z mistnosti
+    /**
+     * Vyhleda a vrati postavu v mistnosti podle jmena.
+     */
     public Postava getPostava(String jmeno) {
         for (String klic : postavy.keySet()) {
             if (klic.equalsIgnoreCase(jmeno)) {

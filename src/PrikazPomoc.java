@@ -1,14 +1,23 @@
-// Prikaz pomoc - vypise dostupne prikazy a cil hry
+/**
+ * Prikaz pomoc vypise strucny cil hry a seznam vsech dostupnych prikazu.
+ */
 public class PrikazPomoc implements IPrikaz {
 
-    private SeznamPrikazu platnePrikazy;
+    private SeznamPrikazu platnePrikazy; // Reference na seznam vsech prikazu
 
-    // Konstruktor prikazu pomoc
+    /**
+     * Konstruktor prikazu.
+     * @param platnePrikazy Seznam prikazu, ktere maji byt vypsany.
+     */
     public PrikazPomoc(SeznamPrikazu platnePrikazy) {
         this.platnePrikazy = platnePrikazy;
     }
 
-    // Provede prikaz - vypise dostupne prikazy a cil
+    /**
+     * Provede vypsani napovedy.
+     * @param parametry Prikaz neocekava parametry.
+     * @return Text s napovedou a dostupnymi prikazy.
+     */
     @Override
     public String proved(String[] parametry) {
         return "Tvym ukolem je najit rodinny talisman (Zlatou kopacku) a dostat se na hriste.\n"
@@ -17,7 +26,9 @@ public class PrikazPomoc implements IPrikaz {
                 + platnePrikazy.vratNazvyPrikazu();
     }
 
-    // Vrati nazev prikazu
+    /**
+     * Vraci nazev prikazu.
+     */
     @Override
     public String getNazev() {
         return "pomoc";
